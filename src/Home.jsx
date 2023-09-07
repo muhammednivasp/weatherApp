@@ -5,16 +5,19 @@ import { API_ID } from '../constants'
 
 function Home() {
   const [data, setData] = useState({
-    celcius: 10,
+    celcius: 0,
     name: 'Malappuram',
-    humidity: 10,
-    speed: 2,
+    humidity: 0,
+    speed: 0,
     image: '/Images/cloudy.png'
   })
 
-  const [name, setName] = useState('')
+  const [name, setName] = useState('Malappuram')
   const [error, setError] = useState('')
 
+useEffect(()=>{
+  handleClick()
+},[])
 
   const handleClick = () => {
     if (name.trim() !== '') {
