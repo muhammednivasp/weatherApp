@@ -25,17 +25,36 @@ useEffect(()=>{
       axios.get(apiUrl).then(res => {
         console.log(res.data);
         let imagepath = '';
+        // if (res.data.weather[0].main == 'Clouds') {
+        //   imagepath = '/Images/cloudy.png'
+        // } else if (res.data.weather[0].main == 'Clear' || 'Haze' ) {
+        //   imagepath = '/Images/sunny.png'
+        // } else if (res.data.weather[0].main == 'Drizzle') {
+        //   imagepath = '/Images/drizzle.png'
+        // } else if (res.data.weather[0].main == 'Mist') {
+        //   imagepath = '/Images/snow.png'
+        // }  else if (res.data.weather[0].main == 'Rain') {
+        //   imagepath = '/Images/rainy.png'
+        // }else {
+        //   imagepath = '/Images/cloudy.png'
+        // }
+
         if (res.data.weather[0].main == 'Clouds') {
           imagepath = '/Images/cloudy.png'
-        } else if (res.data.weather[0].main == 'Clear' || 'Haze') {
+        } else if (res.data.weather[0].icon == '01d' || '01n' ) {
           imagepath = '/Images/sunny.png'
-        } else if (res.data.weather[0].main == 'Drizzle') {
+        } else if (res.data.weather[0].icon == '03d' || '03n' || '04d' || '04n') {
           imagepath = '/Images/drizzle.png'
-        } else if (res.data.weather[0].main == 'Mist') {
-          imagepath = '/Images/mist.png'
-        } else {
+        } else if (res.data.weather[0].icon == '13d' || '13n') {
+          imagepath = '/Images/snow.png'
+        }  else if (res.data.weather[0].icon == '10d' || '10n' || '09d' || '09n') {
+          imagepath = '/Images/rainy.png'
+        }else if(res.data.weather[0].icon == '02d' || '02n'){
           imagepath = '/Images/cloudy.png'
+        }else{
+          imagepath = '/Images/sunny.png'
         }
+
 
         setData({ ...data, celcius: res.data.main.temp, name: res.data.name, humidity: res.data.main.humidity, speed: res.data.wind.speed, image: imagepath })
         setError('')
