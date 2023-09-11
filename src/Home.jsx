@@ -75,7 +75,7 @@ useEffect(()=>{
       <div className='weather'>
         <div className='search'>
           <input type='text' placeholder='Enter City Name' onChange={(e) => setName(e.target.value)} />
-          <button><img src='/Images/pngwing.com.png' onClick={handleClick} /></button>
+          <button onClick={handleClick}><img src='/Images/pngwing.com.png'  /></button>
         </div>
         <div className='error'>
           <p>{error}</p>
@@ -96,7 +96,6 @@ useEffect(()=>{
               <img className='fog' src='/Images/favpng.png' alt='' />
               <div className='wind'>
                 <p>{Math.round(data.speed)} km/h</p>
-                <p>Wind</p>
               </div>
             </div>
           </div>
